@@ -60,7 +60,8 @@ def calc_candidate_weight(c, group, now, hist):
     ndraws = len(prev_draws)
 
     # products are not numerically stable: they tend to converge quickly to zero or to infinity
-    # therefore math.log
+    # therefore math.log (but the order stays the same)
+    # related: https://stackoverflow.com/questions/2343093/what-is-log-likelihood
     weight = math.log(calc_weight(ndraws, ndays))
 
     for member in group:

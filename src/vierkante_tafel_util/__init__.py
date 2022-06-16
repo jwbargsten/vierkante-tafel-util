@@ -1,5 +1,3 @@
-from string import ascii_lowercase as letters
-from scipy.stats import norm
 import math
 import datetime as dt
 from random import shuffle
@@ -11,6 +9,7 @@ def calc_weight(ndraws, ndays):
     # every half year with sd of 60 days
     # or plot some random graphs and take the most beautiful one
     # this would correspond to P(X < ndays), I think
+    # from scipy.stats import norm
     # p = norm.cdf(ndays, loc=180, scale=60)
     # but my simple approximation is much faster
     p = 1 / (1 + math.exp(-(ndays - 180) * 0.03))

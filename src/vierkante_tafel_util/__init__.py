@@ -1,4 +1,5 @@
 from string import ascii_lowercase as letters
+from scipy.stats import norm
 import math
 import datetime as dt
 from random import shuffle
@@ -7,9 +8,15 @@ from random import shuffle
 def calc_weight(ndraws, ndays):
     if ndraws == 0 or ndays is None:
         return 1
-    z = 1 / (1 + math.exp(-(ndays - 180) * 0.03))
-    u = 1 / ndraws
-    return z * u
+    # every half year with sd of 60 days
+    # or plot some random graphs and take the most beautiful one
+    # this would correspond to P(X < ndays), I think
+    # p = norm.cdf(ndays, loc=180, scale=60)
+    # but my simple approximation is much faster
+    p = 1 / (1 + math.exp(-(ndays - 180) * 0.03))
+    # you get punished if you have been selected multiple times
+    u = 1 / (ndraws + 1)
+    return p * u
 
 
 def elapsed_days(draw, now):

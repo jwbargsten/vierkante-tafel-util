@@ -3,12 +3,7 @@ from setuptools import setup, find_packages
 
 
 base_packages = [
-    # "scikit-learn>=1.0.0",
-    # "vaderSentiment>=3.3.2",
-]
-
-docs_packages = [
-    # "mkdocs==1.1",
+    "scipy>=1.8.1",
 ]
 
 test_packages = [
@@ -18,7 +13,7 @@ test_packages = [
 ]
 
 all_packages = base_packages
-dev_packages = all_packages + docs_packages + test_packages
+dev_packages = all_packages + test_packages
 
 
 setup(

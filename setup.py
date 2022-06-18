@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 
 
 base_packages = [
-    "scipy>=1.8.1",
 ]
 
 test_packages = [
@@ -12,8 +11,16 @@ test_packages = [
     "black>=19.3b0",
 ]
 
+docs_packages = [
+    "seaborn",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "scipy",
+]
+
 all_packages = base_packages
-dev_packages = all_packages + test_packages
+dev_packages = all_packages + test_packages + docs_packages
 
 
 setup(

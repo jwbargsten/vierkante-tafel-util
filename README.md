@@ -1,5 +1,12 @@
 # vierkante-tafel-util
 
+Core functions to determine if a person or a group of persons should be selected for the
+next turn. The goal is to distribute the turns for each person so that the group
+selection and the number of turns per person is evenly distributed.
+
+
+$$weight(p, G, H) = weightPerson(ndays(p \in H), ndraws(p, p \in H)) * \prod_{g \in G} weightPerson(ndays((p, g) \in H), ndraws((p, g) \in H))$$
+
 ## License
 
 ```

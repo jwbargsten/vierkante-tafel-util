@@ -35,15 +35,16 @@ def draws_since(date, draws):
     return [draw for draw in draws if draw["date"] > date]
 
 
-def draw(now, people, hist, group_size=4):
+def draw(now, people, hist, group_size=4, initial_group=None):
     shuffle(people)
     recent_hist = draws_sorted(draws_since(now - dt.timedelta(days=365), hist))
 
     blacklist = recent_hist[-1]["group"] if hist else []
 
-    group = list()
+    group = initial_group if initial_group else list()
+    start_idx = len(group)
 
-    for _ in range(0, group_size):
+    for _ in range(start_idx, group_size):
         eligible = [p for p in people if p not in group and p not in blacklist]
         weights = [
             (p, calc_candidate_weight(p, group, now, recent_hist)) for p in eligible
